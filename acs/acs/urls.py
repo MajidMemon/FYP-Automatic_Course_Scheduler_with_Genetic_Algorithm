@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = "Automatic Course Scheduler Admin"
+admin.site.site_title = "Automatic Course Scheduler Admin Portal"
+admin.site.index_title = "Welcome to Automatic Course Scheduler"
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('schedule.urls'))
