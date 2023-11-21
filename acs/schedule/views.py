@@ -12,7 +12,8 @@ def about(request):
    #return HttpResponse("This is about page")
 
 def product(request):
-    return HttpResponse("This is product page")
+    return render(request, 'product.html')
+    #return HttpResponse("This is product page")
 
 def resource(request):
     return HttpResponse("This is resource page")

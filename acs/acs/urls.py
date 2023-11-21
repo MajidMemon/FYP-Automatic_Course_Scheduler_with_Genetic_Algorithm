@@ -23,5 +23,6 @@ admin.site.index_title = "Welcome to Automatic Course Scheduler"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('schedule.urls'))
+    path('', include('schedule.urls')),
+    path('account/', include("account.urls")),
 ]

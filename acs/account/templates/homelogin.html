@@ -1,0 +1,12 @@
+{% load static %}
+
+{% if request.user.is_authenticated %}
+  <p>{{ request.user.username }}</p>
+  <a href="{% url 'home' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'signup' %}">Signup</a>
+{% endif %}
+
+<h1>Welcome!</h1>
+<h2> This is the main panel where the process of schedule generating wil be done <h2>
