@@ -1,4 +1,4 @@
-from django.db import models
+.from django.db import models
 import random as rnd
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
@@ -72,28 +72,3 @@ class Department(models.Model):
 
     def __str__(self):
         return self.dept_name
-
-
-class Section(models.Model):
-    section_id = models.CharField(max_length=25, primary_key=True)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    num_class_in_week = models.IntegerField(default=0)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True, null=True)
-    meeting_time = models.ForeignKey(MeetingTime, on_delete=models.CASCADE, blank=True, null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, blank=True, null=True)
-    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, blank=True, null=True)
-
-    def set_room(self, room):
-        section = Section.objects.get(pk = self.section_id)
-        section.room = room
-        section.save()
-
-    def set_meetingTime(self, meetingTime):
-        section = Section.objects.get(pk = self.section_id)
-        section.meeting_time = meetingTime
-        section.save()
-
-    def set_instructor(self, instructor):
-        section = Section.objects.get(pk=self.section_id)
-        section.instructor = instructor
-        section.save()
