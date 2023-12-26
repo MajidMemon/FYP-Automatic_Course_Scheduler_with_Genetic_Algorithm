@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms1 import UserCreationForm, LoginForm
+from django.urls import reverse
 
 
 def home_login(request):
     return render(request, 'homelogin.html')
+
+#def loginpage(request):
+ #   return render(request, 'login.html')
 
 # signup page
 def user_signup(request):

@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-samsung-sharp-sans: "Samsung Sharp Sans";
+    --font-plus-jakarta-sans: "Plus Jakarta Sans";
+    --font-integral-cf: "Integral CF";
+    --font-manrope: Manrope;
+    --b1-regular: Satoshi;
+  
+    /* font sizes */
+    --font-size-6xl: 25px;
+    --b1-regular-size: 16px;
+    --font-size-11xl: 30px;
+    --font-size-4xl-2: 23.2px;
+    --font-size-lg: 18px;
+    --b3-regular-size: 12px;
+    --font-size-3xl: 22px;
+  
+    /* Colors */
+    --color-white: #fff;
+    --color-goldenrod-100: #ffd365;
+    --color-goldenrod-200: #ffd650;
+    --color-gray: #141414;
+    --color-dimgray: #4e4e4e;
+    --color-lavender: #d0ebff;
+    --color-steelblue: #0d548b;
+    --color-whitesmoke: #f2f2f2;
+    --grey-400: #999;
+    --error-500: #dd3838;
+    --success-500: #38dd72;
+    --color-slategray-100: #646584;
+    --color-midnightblue: #0a083a;
+  
+    /* Gaps */
+    --gap-4xs: 9px;
+    --gap-8xs: 5px;
+    --gap-3xs: 10px;
+  
+    /* Paddings */
+    --padding-mini: 15px;
+    --padding-10xl: 29px;
+    --padding-3xs: 10px;
+  
+    /* Border radiuses */
+    --br-5xl: 24px;
+    --br-39xl: 58px;
+    --br-8xs: 5px;
+  }

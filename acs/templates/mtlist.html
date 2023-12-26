@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TTGS | Dashboard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f0f0f0;
+			color: #333;
+		}
+	
+		.navbar-brand {
+			font-size: 24px;
+			font-family: 'Arial', sans-serif;
+		}
+	
+		.main {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+	
+		.logo {
+			margin-top: 20px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+	
+		.logo h2 {
+			font-size: 28px;
+			color: #257a7a;
+		}
+	
+		.logo h4 {
+			font-size: 18px;
+			color: #888;
+		}
+	
+		form {
+			margin: 3% auto;
+			max-width: 500px;
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+	
+		form fieldset {
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+	
+		fieldset legend {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+		}
+	
+		fieldset h1 {
+			color: #333;
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+	
+		fieldset label {
+			display: block;
+			margin-bottom: 10px;
+			font-size: 16px;
+			color: #333;
+		}
+	
+		fieldset input {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			color: #333;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+	
+		fieldset button {
+			width: 100%;
+			padding: 10px;
+			color: #fff;
+			background-color: #257a7a;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	</style>
+	
+
+    <link rel="stylesheet" type="text/css" href="static/css/index.css">
+
+</head>
+<body>
+        <header>
+            <!--Navigation Bar-->
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#"><b>TIMETABLE GENERATOR</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admindash' %}">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addInstructors' %}">Add Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
+                    </li>
+                    <li class="nav-item active">
+		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
+		            </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
+                    </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
+		            </li>
+					<li class="nav-item">
+			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
+		            </li>
+					<li class="nav-item">
+			            <a class="nav-link" href="#">Generate Timetable</a>
+		            </li>
+					<li class="nav-item active">
+			            <a class="nav-link">|</a>
+		            </li>
+                    <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ user.first_name }}</a>
+			            <div class="dropdown-menu" aria-labelledby="dropdown03">
+			            
+				            <a class="dropdown-item" href="{% url 'login' %}">Logout</a>
+			            </div>
+		            </li>
+                    </ul>
+
+                    <script type="text/javascript">
+
+        var checkList = document.getElementById('list1');
+        var items = document.getElementById('items');
+        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+            if (items.classList.contains('visible')){
+                items.classList.remove('visible');
+                items.style.display = "none";
+            }
+
+            else{
+                items.classList.add('visible');
+                items.style.display = "block";
+            }
+
+
+        }
+
+        items.onblur = function(evt) {
+            items.classList.remove('visible');
+        }
+    </script>
+                </div>
+            </nav>
+        </header>
+		<br><br>
+        {%block content%}
+        {% load static %}
+        <fieldset class="fieldset">
+    <a href="{% url 'addTimings'%}"><h1 class="tablink" onclick="openPage('new')" id="defaultOpen">Back to Add Timings</h1></a>
+    <div class="tabcontent" id="edit">
+			<table class="table1">
+				<thead>
+				<tr class="table-headers">
+				<th>PID</th>
+				<th>Day</th>
+				<th>Timing</th>
+				<th  class="empty"></th>
+				</tr>
+				</thead>
+
+				<tbody>
+				{% for mt in meeting_times %}
+				<tr>
+				 <td>{{mt.meet_id}}</td>
+				 <td>{{mt.day}}</td>
+				 <td>{{mt.meet_time}}</td>
+				 <td class="empty">
+					<form action="{% url 'deletemeetingtime' mt.meet_time %}" method="post">
+						{% csrf_token %}
+						<input type="submit" value="Delete" class="cross">
+					</form>
+				 </td>
+				 </tr>
+				{% endfor %}
+				</tbody>
+
+			</table>
+		</div>
+</fieldset>
+
+{% endblock %}

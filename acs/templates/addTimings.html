@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TTGS | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        nav {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+        }
+
+        h1, h2, h3, h4, h5 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin: 2% auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form fieldset {
+            padding: 20px;
+            border-width: 5px;
+            border-style: groove;
+            border-color: #5a5a5a;
+            background-color: #fff;
+        }
+
+        fieldset h1 {
+            color: #5a5a5a;
+            padding-bottom: 20px;
+            font-size: 28px;
+        }
+
+        fieldset label {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            display: block;
+        }
+
+        fieldset input {
+            padding: 8px;
+            color: #333;
+            width: 100%;
+        }
+
+        fieldset input:focus {
+            color: #000;
+        }
+
+        fieldset button {
+            margin-top: 15px;
+            color: #fff;
+            background-color: #5a5a5a;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="static/css/index.css">
+</head>
+<body>
+        <header>
+            <!--Navigation Bar-->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+              <a class="navbar-brand" href="#"><b>Automatic Course Scheduling</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admindash' %}">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addInstructors' %}">Add Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
+                    </li>
+                    <li class="nav-item active">
+		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
+		            </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
+                    </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
+		            </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
+		            </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="#">Generate Timetable</a>
+		            </li>
+                    <li class="nav-item active">
+			            <a class="nav-link">|</a>
+		            </li>
+                    <li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ user.first_name }}</a>
+			            <div class="dropdown-menu" aria-labelledby="dropdown03">
+			            
+				            <a class="dropdown-item" href="{% url 'logout' %}">login</a>
+			            </div>
+		            </li>
+                    </ul>
+
+                    <script type="text/javascript">
+
+        var checkList = document.getElementById('list1');
+        var items = document.getElementById('items');
+        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+            if (items.classList.contains('visible')){
+                items.classList.remove('visible');
+                items.style.display = "none";
+            }
+
+            else{
+                items.classList.add('visible');
+                items.style.display = "block";
+            }
+
+
+        }
+
+        items.onblur = function(evt) {
+            items.classList.remove('visible');
+        }
+    </script>
+                </div>
+            </nav>
+        </header>
+        {%block content%}
+{% load static %}
+        <br><br>
+        <h2>Add Timings</h2>
+        <h5>Please use the following form to enter the Timings into the system for timetable generation</h5>
+<form method="post">
+	{% csrf_token %}
+	<fieldset>
+		<div class="tabcontent" id="new">
+			{{ form.as_p }}
+		<a href="{% url 'editmeetingtime' %}"><h1 class="submit" onclick="openPage('edit')">View / Edit Timings</h1></a><input type="submit" value="Add Timings" class="submit">
+		</div>
+	</fieldset>
+</form>
+
+{%endblock%}
+
+</body>
+</html>

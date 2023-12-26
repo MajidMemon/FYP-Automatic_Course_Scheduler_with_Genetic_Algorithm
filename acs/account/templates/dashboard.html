@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
 {% load static %}
 
 {% if request.user.is_authenticated %}
@@ -9,6 +14,5 @@
 {% endif %}
 
 <h1>Welcome!</h1>
-<h2> This is the main panel where the process of schedule generating wil be done 
-  Click Here to generate schedule<h2> <a href="{% url 'admindash' %}">Click here</a>
-  
+<h2> This is the main panel where the process of schedule generating wil be done <h2>
+{% endblock %}
