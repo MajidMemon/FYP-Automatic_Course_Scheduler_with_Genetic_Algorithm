@@ -1,0 +1,19 @@
+<!-- templates/yourapp/results.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Genetic Algorithm Results</title>
+</head>
+<body>
+
+<h1>Genetic Algorithm Results</h1>
+
+<ul>
+    {% for session in best_schedule %}
+        <li>{{ session.course.name }} | {{ session.instructor.name }} | {{ session.classroom.name }} | {{ session.meeting_time }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
